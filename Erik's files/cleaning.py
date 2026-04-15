@@ -189,6 +189,6 @@ print("=" * 60)
 # 5. Save Cleaned Dataset
 # =============================================================================
 
-cleaned_path = os.path.join(os.path.dirname(__file__), "cleaned_titanic.csv")
+cleaned_path = os.path.join(os.path.dirname(__file__), "..", "cleaned_titanic.csv")
 df.to_csv(cleaned_path, index=False)
 print(f"\nCleaned dataset saved to: {cleaned_path}")

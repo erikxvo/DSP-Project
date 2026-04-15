@@ -12,7 +12,7 @@ import os
 # Load and prepare data
 # =============================================================================
 
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "cleaned_titanic.csv"))
+df = pd.read_csv(os.path.join(os.path.dirname(__file__), "..", "cleaned_titanic.csv"))
 
 # Output directory (same folder as this script)
 out_dir = os.path.dirname(os.path.abspath(__file__))
