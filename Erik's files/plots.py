@@ -6,16 +6,12 @@ Author: Erik Vo
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 
 # =============================================================================
 # Load and prepare data
 # =============================================================================
 
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "..", "cleaned_titanic.csv"))
-
-# Output directory (same folder as this script)
-out_dir = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv("cleaned_titanic.csv")
 
 # =============================================================================
 # Plot 1 — Bar Plot: Survival Rate by Passenger Class
@@ -42,7 +38,7 @@ ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plot1_path = os.path.join(out_dir, "plot1_survival_by_class.png")
+plot1_path = "Erik's files/plot1_survival_by_class.png"
 plt.savefig(plot1_path, dpi=150)
 plt.close()
 
@@ -78,7 +74,7 @@ ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plot2_path = os.path.join(out_dir, "plot2_age_distribution.png")
+plot2_path = "Erik's files/plot2_age_distribution.png"
 plt.savefig(plot2_path, dpi=150)
 plt.close()
 
@@ -121,7 +117,7 @@ ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plot3_path = os.path.join(out_dir, "plot3_fare_by_survival.png")
+plot3_path = "Erik's files/plot3_fare_by_survival.png"
 plt.savefig(plot3_path, dpi=150)
 plt.close()
 

@@ -1,7 +1,6 @@
 import pandas as pd
-import os
 
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "..", "cleaned_titanic.csv"))
+df = pd.read_csv("cleaned_titanic.csv")
 
 #Analysis
 print("Survival rate:", df["Survived"].mean())
