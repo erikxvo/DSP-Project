@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("titanic_clean.csv")
+df = pd.read_csv("cleaned_titanic.csv")
 
 #Analysis
 print("Survival rate:", df["Survived"].mean())

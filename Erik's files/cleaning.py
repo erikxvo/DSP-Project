@@ -4,7 +4,6 @@ Part 1: Data Cleaning and Analysis
 Author: Erik Vo
 """
 
-import os
 import pandas as pd
 import numpy as np
 
@@ -12,7 +11,7 @@ import numpy as np
 # 1. Load Dataset
 # =============================================================================
 
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "..", "Titanic-Dataset.csv"))
+df = pd.read_csv("Titanic-Dataset.csv")
 
 # =============================================================================
 # 2. Initial Inspection
@@ -189,6 +188,5 @@ print("=" * 60)
 # 5. Save Cleaned Dataset
 # =============================================================================
 
-cleaned_path = os.path.join(os.path.dirname(__file__), "cleaned_titanic.csv")
-df.to_csv(cleaned_path, index=False)
-print(f"\nCleaned dataset saved to: {cleaned_path}")
+df.to_csv("cleaned_titanic.csv", index=False)
+print("\nCleaned dataset saved to: cleaned_titanic.csv")
