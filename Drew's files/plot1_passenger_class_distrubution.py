@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("cleaned_titanic.csv")
 
 #Count passenger classes
-class_counts = df["Pclass"].values_counts().sort_index()
+class_counts = df["Pclass"].value_counts().sort_index()
 
 #Plot
 class_counts.plot(kind="bar")
