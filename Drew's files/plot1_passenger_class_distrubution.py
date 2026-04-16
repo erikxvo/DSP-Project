@@ -20,5 +20,5 @@ plt.show()
 
 print("""
 Interpretation (Plot 1 - Bar Plot: Passenger Class Distribution): The majority of passengers aboard the Titanic were in third class, with significantly fewer passengers in the second class and the smallest group in the first class. This distribution reflects the ship's role in transporting large numbers of lower-income travelers and immigrants, while a smaller portion of wealthier passengers occupied higher classes.
-Because third class passengers made up such a large share of teh total population, this imbalance is important to consider in later analyses, especially when comparing survival outcomes across social class. 
+Because third class passengers made up such a large share of the total population, this imbalance is important to consider in later analyses, especially when comparing survival outcomes across social class. 
 """)
