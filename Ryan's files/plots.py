@@ -6,7 +6,6 @@ Descriptive Visualization Plots
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 
 
 df = pd.read_csv("cleaned_titanic.csv")
@@ -16,8 +15,6 @@ df = pd.read_csv("cleaned_titanic.csv")
 survival_rate_by_gender = df.groupby("Sex")["Survived"].mean()*100
 labels = ["Male", "Female"]
 colors = ["#750c35", "#3a7ebf"]
-fig, ax = plt.subplots(figsize=(8, 5))
-colors = ["#750c35", "3a7ebf"]
 
 fig, ax = plt.subplots(figsize=(7,5))
 bars = ax.bar(labels, survival_rate_by_gender.values, color=colors, edgecolor="black", width = 0.5)
@@ -36,7 +33,6 @@ ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
 plotryan1_path = "Ryan's files/plot1_survival_by_gender.png"
-plotryan1_path = os.path.join("plot1_survival_by_gender.png")
 plt.savefig(plotryan1_path, dpi=150)
 plt.close()
 
