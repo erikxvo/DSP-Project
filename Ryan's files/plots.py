@@ -5,21 +5,17 @@ Descriptive Visualization Plots
 """
 
 import pandas as pd
-import matplotlib as plt
-import os
+import matplotlib.pyplot as plt
 
 
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "cleaned_titanic.csv"))
-
-out_dir = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv("cleaned_titanic.csv")
 
 # Plot 1 - Survival Rate by Gender
 
 survival_rate_by_gender = df.groupby("Sex")["Survived"].mean()*100
 labels = ["Male", "Female"]
-colors = ["#750c35", "f40knn"]
-
-fig, ax = plt.subplots(figsize=(7,5))
+colors = ["#750c35", "#3a7ebf"]
+fig, ax = plt.subplots(figsize=(8, 5))
 bars = ax.bar(labels, survival_rate_by_gender.values, color=colors, edgecolor="black", width = 0.5)
 
 for bar, val in zip(bars, survival_rate_by_gender.values):
@@ -35,8 +31,8 @@ ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plotryan1_path = os.path.join(out_dir, "plot1_survival_by_gender.png")
-plt.savefig(plot1_path, dpi=150)
+plotryan1_path = "Ryan's files/plot1_survival_by_gender.png"
+plt.savefig(plotryan1_path, dpi=150)
 plt.close()
 
 print("Plot 1 saved:", plotryan1_path)
