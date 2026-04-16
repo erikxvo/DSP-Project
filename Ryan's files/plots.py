@@ -35,6 +35,8 @@ ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plot1_path = os.path.join(out_dir, "plot1_survival_by_gender.png")
+plotryan1_path = os.path.join(out_dir, "plot1_survival_by_gender.png")
 plt.savefig(plot1_path, dpi=150)
 plt.close()
+
+print("Plot 1 saved:", plotryan1_path)
