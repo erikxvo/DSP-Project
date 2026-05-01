@@ -45,26 +45,32 @@ print("Plot 1 saved:", plotryan1_path)
 import numpy as np
 
 fig, ax = plt.subplots(figsize=(7, 5))
-ax.scatter(df["Age"], df["Fare"], color="#3a7ebf", edgecolor="black", linewidth=0.4, alpha=0.6, s=30)
 
-clean = df[["Age", "Fare"]].dropna()
-m, b = np.polyfit(clean["Age"], clean["Fare"], 1)
-ax.plot(clean["Age"].sort_values(), m * clean["Age"].sort_values() + b,
-        color="#750c35", linewidth=1.5, linestyle="--")
+df["Embarked"] = np.select(
+    [df["Embarked_Q"] == 1, df["Embarked_S"] == 1],
+    ["Queenstown", "Southampton"],
+    default="Cherbourg"
+)
 
-ax.set_title("Age vs. Fare", fontsize=14, fontweight="bold", pad=12)
-ax.set_xlabel("Age", fontsize=12)
-ax.set_ylabel("Fare ($)", fontsize=12)
-ax.grid(linestyle="--", alpha=0.5)
+survival_by_port = df.groupby("Embarked")["Survived"].mean() * 100
+ports = ["Cherbourg", "Queenstown", "Southampton"]
+
+ax.bar(ports, survival_by_port[ports], color="#3a7ebf", edgecolor="black", linewidth=0.4, width=0.5)
+
+ax.set_title("Survival Rate by Embarkation Port", fontsize=14, fontweight="bold", pad=12)
+ax.set_xlabel("Embarkation Port", fontsize=12)
+ax.set_ylabel("Survival Rate (%)", fontsize=12)
+ax.set_ylim(0, 80)
+ax.grid(axis="y", linestyle="--", alpha=0.5)
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 
 plt.tight_layout()
-plotryan2_path = "Ryan's files/plot2_age_vs_fare.png"
-plt.savefig(plotryan2_path, dpi=150)
+plot2_embarkedport_vs_survival = "Ryan's files/plot_survival_by_port.png"
+plt.savefig(plot2_embarkedport_vs_survival, dpi=150)
 plt.close()
 
-print("Plot 2 saved:", plotryan2_path)
+print("Plot saved:", plot2_embarkedport_vs_survival)
 
 # =============================================================================
 # Plot 3: Survival Rate by Family Size
