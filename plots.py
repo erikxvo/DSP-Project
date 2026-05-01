@@ -2,7 +2,7 @@
 Titanic Project — Descriptive and Diagnostic Plots
 ==================================================
 
-Loads ``cleaned_titanic.csv`` and writes 13 PNG plots to the current
+Loads ``cleaned_titanic.csv`` and writes 12 PNG plots to the current
 directory — every original plot from every teammate is preserved.
 (The model's feature-importance bar chart lives in ``model.py``.)
 Every figure is saved with ``plt.savefig`` — there are no ``plt.show()``
@@ -12,10 +12,10 @@ Run from the repo root:
     python3 plots.py
 
 Contributors:
-    Erik   — plots 1, 3, 4, 12 (and shared figure styling)
+    Erik   — plots 1, 3, 4 (and shared figure styling)
     Connor — plots 2, 5, 11
     Drew   — plots 6, 9, 10
-    Ryan   — plots 7, 8, 13
+    Ryan   — plots 7, 8, 12
 """
 
 import numpy as np
@@ -380,30 +380,10 @@ def plot_11_average_fare_by_age(df: pd.DataFrame) -> str:
 
 
 # =============================================================================
-# Plot 12 — Passenger Class Distribution (Bonus)                  (author: Erik)
+# Plot 12 — Survival Rate by Embarkation Port                    (author: Ryan)
 # =============================================================================
 
-def plot_12_passenger_class_distribution_bonus(df: pd.DataFrame) -> str:
-    """Bar chart of raw passenger counts per class — Erik's bonus version."""
-    fig, ax = plt.subplots(figsize=(6, 4))
-    df["Pclass"].value_counts().plot(kind="bar", ax=ax)
-
-    ax.set_title("Passenger Class Distribution")
-    ax.set_xlabel("Class")
-    ax.set_ylabel("Count")
-
-    plt.tight_layout()
-    path = "12_passenger_class_distribution_bonus.png"
-    plt.savefig(path, dpi=DPI)
-    plt.close()
-    return path
-
-
-# =============================================================================
-# Plot 13 — Survival Rate by Embarkation Port                    (author: Ryan)
-# =============================================================================
-
-def plot_13_survival_by_port(df: pd.DataFrame) -> str:
+def plot_12_survival_by_port(df: pd.DataFrame) -> str:
     """Bar chart of survival rate (%) for each embarkation port.
 
     Reconstructs the original Embarked column from the one-hot dummies
@@ -430,7 +410,7 @@ def plot_13_survival_by_port(df: pd.DataFrame) -> str:
     ax.spines[["top", "right"]].set_visible(False)
 
     plt.tight_layout()
-    path = "13_survival_by_port.png"
+    path = "12_survival_by_port.png"
     plt.savefig(path, dpi=DPI)
     plt.close()
     return path
@@ -453,8 +433,7 @@ def main() -> None:
         plot_09_passenger_class_distribution,
         plot_10_age_distribution_overall,
         plot_11_average_fare_by_age,
-        plot_12_passenger_class_distribution_bonus,
-        plot_13_survival_by_port,
+        plot_12_survival_by_port,
     ]
 
     print(f"Saving {len(plot_functions)} plots to current directory ...")
