@@ -40,7 +40,7 @@ plt.close()
 print("Plot 1 saved:", plotryan1_path)
 
 # =============================================================================
-# Plot 2 — Histogram: Fare Paid by Age
+# Plot 2 — Histogram: Survival Rate by Embarkation Port
 # =============================================================================
 import numpy as np
 
