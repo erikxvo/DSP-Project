@@ -35,6 +35,77 @@ COLOR_NEUTRAL = "#3a7ebf"
 # Load the cleaned dataset once and share it across every plot function.
 df = pd.read_csv("cleaned_titanic.csv")
 
+# Interpretations printed alongside each saved plot.
+INTERPRETATIONS = {
+    1: "Passenger class was one of the strongest predictors of survival. First-class "
+       "passengers survived at roughly 63%, compared to about 47% for second class and "
+       "only 24% for third class. This stark gradient reflects both socioeconomic "
+       "privilege (better cabin locations closer to lifeboats) and the social norms of "
+       "the era, where wealthier passengers were prioritized during the evacuation.",
+
+    2: "Females had a survival rate of 74.2% compared to just 18.9% for males, "
+       "revealing a dramatic difference in survival outcomes by sex. This is largely "
+       "explained by the 'women and children first' evacuation protocol followed by "
+       "the Titanic's crew, which prioritised women's access to the limited lifeboats. "
+       "This makes sex one of the strongest predictors of survival in the dataset.",
+
+    3: "The overlapping histograms reveal that young children (under ~10) had a "
+       "noticeably higher survival proportion relative to their total count, "
+       "consistent with a 'women and children first' evacuation policy. The largest "
+       "cluster of non-survivors falls in the 20-35 age range — predominantly young "
+       "adult males travelling in third class. Older passengers (60+) show lower "
+       "survival counts, likely due to limited mobility during the evacuation.",
+
+    4: "Survivors paid substantially higher fares than those who did not survive: the "
+       "median fare for survivors is roughly double that of non-survivors, and the "
+       "interquartile range extends much higher. Since fare is closely tied to "
+       "passenger class and cabin proximity to the lifeboats, this plot reinforces "
+       "that economic status played a critical role in survival outcomes.",
+
+    5: "The histogram shows that the vast majority of passengers paid low fares, with "
+       "Third Class tickets clustered tightly under £20 and Second Class fares only "
+       "slightly higher. First Class fares, by contrast, were spread across a much "
+       "wider range — with some passengers paying over £200 — reflecting the "
+       "significant wealth gap on board. Fare and class were closely tied to survival.",
+
+    6: "There is no strong relationship between age and fare. However, passengers who "
+       "paid higher fares appear more likely to survive, suggesting that wealth "
+       "played a larger role in survival than age.",
+
+    7: "Survival rates rise sharply for small families (2-4 people) compared to "
+       "passengers travelling alone, then drop again for very large families (5+). "
+       "Solo travellers had a ~30% survival rate while small family groups exceeded "
+       "50%, suggesting that some family coordination helped during evacuation but "
+       "very large families struggled to stay together.",
+
+    8: "Females had a survival rate of about 74% compared to roughly 19% for males. "
+       "Gender was one of the strongest single predictors of survival on the Titanic.",
+
+    9: "Third-class passengers make up the largest portion of the dataset, while "
+       "first-class passengers represent the smallest group. This imbalance is "
+       "important because it means most passengers were in the lowest socioeconomic "
+       "class, which likely contributed to lower overall survival rates due to poorer "
+       "cabin locations and reduced access to lifeboats.",
+
+    10: "The age distribution is right-skewed, with most passengers centered between "
+        "20 and 40 years old. There are relatively few very young children and "
+        "elderly passengers. This indicates that the Titanic primarily carried "
+        "working-age adults, which helps explain why this group experienced the "
+        "highest number of casualties during the disaster.",
+
+    11: "The line plot reveals that fare prices are quite volatile across ages, with "
+        "several sharp spikes indicating that certain ages — particularly in the "
+        "30-50 range — include passengers who paid significantly higher fares. "
+        "Overall there is no strong linear trend, meaning age alone does not "
+        "consistently predict how much someone paid. The spikes likely correspond to "
+        "wealthy First Class passengers at those ages.",
+
+    12: "Cherbourg passengers survived at the highest rate (~55%), followed by "
+        "Queenstown (~39%) and Southampton (~34%). The port effect is largely a "
+        "confound with class — Cherbourg loaded a disproportionate share of "
+        "first-class passengers — rather than the port itself causing better outcomes.",
+}
+
 
 # =============================================================================
 # Plot 1 — Survival Rate by Passenger Class                       (author: Erik)
@@ -436,10 +507,11 @@ def main() -> None:
         plot_12_survival_by_port,
     ]
 
-    print(f"Saving {len(plot_functions)} plots to current directory ...")
-    for fn in plot_functions:
+    print(f"Saving {len(plot_functions)} plots to current directory ...\n")
+    for i, fn in enumerate(plot_functions, start=1):
         path = fn(df)
-        print(f"  saved: {path}")
+        print(f"[Plot {i}] saved: {path}")
+        print(f"Interpretation: {INTERPRETATIONS[i]}\n")
     print("All plots saved successfully.")
 
 
